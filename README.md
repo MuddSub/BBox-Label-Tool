@@ -1,13 +1,15 @@
 BBox-Label-Tool
 ===============
 
-##**New Update**##
+**New Update**
 BBox-Label_Tool Adapoted from https://github.com/puzzledqs/BBox-Label-Tool
 -Modified to be compatiable with python3
 Convert.py adapted from https://github.com/Guanghan/darknet/blob/master/scripts/convert.py
 -TODO: Modified to work with BBox-Label-Tool file system
 
 Brief Instruction: the files inside the image folder are labeled by their class labels. For instance, you might label cat as class 001. Then to label cat, you want to move all images of cats to class 001 folder inside the image folder. Your labels should be generated insie the label folder. These labels are NOT in yolo's accepted format. To convert, use the convertion.py.
+
+----------------
 
 ** Original README **
 Below is the original README for BBox-Label-Tool:
