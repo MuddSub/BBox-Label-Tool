@@ -14,7 +14,7 @@ Brief Instruction: the files inside the image folder are labeled by their class 
 
 ----------------
 
-** Original README **
+**Original README** 
 Below is the original README for BBox-Label-Tool:
 
 A simple tool for labeling object bounding boxes in images, implemented with Python Tkinter.
