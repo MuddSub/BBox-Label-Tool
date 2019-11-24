@@ -12,7 +12,7 @@ import os
 from os import walk, getcwd
 from PIL import Image
 
-classes = ["stopsign"]
+classes = ["000"]
 
 def convert(size, box):
     dw = 1./size[0]
@@ -31,10 +31,10 @@ def convert(size, box):
 """-------------------------------------------------------------------""" 
 
 """ Configure Paths"""   
-mypath = "labels/stopsign_original/"
-outpath = "labels/stopsign/"
+mypath = "./Labels/000/"
+outpath = "./Labels/000_sign/"
 
-cls = "stopsign"
+cls = "000"
 if cls not in classes:
     exit(0)
 cls_id = classes.index(cls)
@@ -47,17 +47,16 @@ txt_name_list = []
 for (dirpath, dirnames, filenames) in walk(mypath):
     txt_name_list.extend(filenames)
     break
-print(txt_name_list)
 
 """ Process """
 for txt_name in txt_name_list:
-    # txt_file =  open("Labels/stop_sign/001.txt", "r")
+    # txt_file =  open("./Labels/000/frame0.txt", "r")
     
     """ Open input text files """
     txt_path = mypath + txt_name
     print("Input:" + txt_path)
     txt_file = open(txt_path, "r")
-    lines = txt_file.read().split('\r\n')   #for ubuntu, use "\r\n" instead of "\n"
+    lines = txt_file.read().split('\n')   #for ubuntu, use "\r\n" instead of "\n"
     
     """ Open output text files """
     txt_outpath = outpath + txt_name
@@ -68,8 +67,9 @@ for txt_name in txt_name_list:
     """ Convert the data to YOLO format """
     ct = 0
     for line in lines:
-        #print('lenth of line is: ')
-        #print(len(line))
+        # print(line)
+        # print('lenth of line is: ')
+        # print(len(line))
         #print('\n')
         if(len(line) >= 2):
             ct = ct + 1
@@ -81,7 +81,7 @@ for txt_name in txt_name_list:
             ymin = elems[1]
             ymax = elems[3]
             #
-            img_path = str('%s/images/%s/%s.JPEG'%(wd, cls, os.path.splitext(txt_name)[0]))
+            img_path = str('%s/Images/%s/%s.jpg'%(wd, cls, os.path.splitext(txt_name)[0]))
             #t = magic.from_file(img_path)
             #wh= re.search('(\d+) x (\d+)', t).groups()
             im=Image.open(img_path)
@@ -98,6 +98,6 @@ for txt_name in txt_name_list:
 
     """ Save those images with bb into list"""
     if(ct != 0):
-        list_file.write('%s/images/%s/%s.JPEG\n'%(wd, cls, os.path.splitext(txt_name)[0]))
+        list_file.write('%s/Labels/%s/%s.jpg\n'%(wd, cls, os.path.splitext(txt_name)[0]))
                 
 list_file.close()       
